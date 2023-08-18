@@ -48,13 +48,27 @@ function WeatherForecast() {
           dailyForecasts.map((forecast, key) => (
             <li key={key}>
               <p>{formatDate(forecast.datetime)}</p>
-              {forecast.icon === "rain" ? <img src={rain}></img> : null}
-              {forecast.icon === "partly-cloudy-day" ? <img src={cloudy}></img> : null}
-              {forecast.icon === "clear-day" ? <img src={clear}></img> : null}
+              {forecast.icon === "rain" ? (
+                <div>
+                  <p>Yağmurlu</p> <img src={rain}></img>
+                </div>
+              ) : null}
+
+              {forecast.icon === "partly-cloudy-day" ? (
+                <div>
+                  <p>Parçalı bulutlu</p> <img src={cloudy}></img>
+                </div>
+              ) : null}
+
+              {forecast.icon === "clear-day" ? (
+                <div>
+                  <p>Güneşli</p> <img src={clear}></img>
+                </div>
+              ) : null}
 
               <div className="temp">
                 <p>{forecast.tempmax}°C</p>
-                <p>{forecast.tempmin}°C</p>
+                <p style={{ color: "gray" }}>{forecast.tempmin}°C</p>
               </div>
             </li>
           ))}
